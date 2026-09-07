@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Newsreader', Georgia, Cambria, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --color-editorial-dark: #0D0D0D;
+  --color-editorial-panel: #111111;
+  --color-editorial-elevated: #161616;
+  --color-editorial-surface: #1A1A1A;
+  --color-editorial-ivory: #F9F9F9;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #0D0D0D;
+  color: #F9F9F9;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle architectural grid & hairline frames */
+.editorial-grid {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(249, 249, 249, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(249, 249, 249, 0.02) 1px, transparent 1px);
+}
+
+.editorial-hairline {
+  border-color: rgba(249, 249, 249, 0.1);
+}
+
+.editorial-hairline-strong {
+  border-color: rgba(249, 249, 249, 0.2);
+}
+
+/* Concentric rings from design theme */
+.editorial-ring-1 {
+  border: 1px solid rgba(249, 249, 249, 0.05);
+}
+
+.editorial-ring-2 {
+  border: 1px solid rgba(249, 249, 249, 0.1);
+}
+
+@keyframes stripe-slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 48px 0;
+  }
+}
+
+.animate-stripes-active {
+  animation: stripe-slide 1.5s linear infinite;
+}
+
+/* 60FPS Hardware-Accelerated Smooth Hanging Sway */
+@keyframes hanging-bob {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(-0.5deg);
+  }
+  50% {
+    transform: translateY(-13px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(0.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-hanging {
+  animation: hanging-bob 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: top center;
+  will-change: transform;
+}
