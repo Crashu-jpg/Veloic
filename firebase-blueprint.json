@@ -1,0 +1,39 @@
+{
+  "entities": {
+    "Message": {
+      "title": "Message",
+      "description": "A direct contact message submitted by a visitor to the founder desk",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "topic": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["message", "createdAt"]
+    },
+    "Subscriber": {
+      "title": "Subscriber",
+      "description": "Visitor subscribed to launch and implementation notifications",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "subscribedAt": { "type": "string" }
+      },
+      "required": ["email", "subscribedAt"]
+    }
+  },
+  "firestore": {
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Collection of visitor contact messages for the founder desk"
+    },
+    "/subscribers/{subscriberId}": {
+      "schema": "Subscriber",
+      "description": "Collection of notification alert subscribers"
+    }
+  }
+}

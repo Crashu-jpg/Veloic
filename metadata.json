@@ -1,0 +1,6 @@
+{
+  "name": "Veloic",
+  "description": "High-velocity platform and infrastructure engineered for next-generation software teams.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

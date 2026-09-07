@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Visitor messages collection
+    match /messages/{messageId} {
+      // Anyone can submit a message (contact founder form)
+      allow create: if request.resource.data.message is string 
+                    && request.resource.data.message.size() > 0
+                    && request.resource.data.message.size() <= 2000;
+      
+      // Reading, updating (mark as read), and deleting allowed for desk management
+      allow read, update, delete: if true;
+    }
+
+    // Launch alert subscribers
+    match /subscribers/{subscriberId} {
+      allow create: if request.resource.data.email is string 
+                    && request.resource.data.email.size() > 0;
+      allow read: if true;
+    }
+
+    // Connection test document
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+  }
+}
